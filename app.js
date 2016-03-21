@@ -20,4 +20,14 @@ var turnOff = function() {
   }
 }
 
+var turnOn = function() {
+  if(isOpen){
+    var data = new Buffer("A60100000004011802B8","hex");
+    serialPort.write(data, function(err, results) {
+      console.log('err ' + err);
+      console.log('results ' + results);
+    });
+  }
+}
 setTimeout(turnOff,2000);
+setTimeout(turnOn,10000);
