@@ -12,7 +12,7 @@ serialPort.on('open', function(data) {
 
 var turnOff = function() {
   if(isOpen){
-    var data = new Buffer("A60100000004011802B8","hex");
+    var data = new Buffer("A60100000004011801BB","hex");
     serialPort.write(data, function(err, results) {
       console.log('err ' + err);
       console.log('results ' + results);
