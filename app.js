@@ -6,10 +6,18 @@ var isOpen = false;
 
 serialPort.on('open', function(data) {
   console.log('open: ' + data);
+  isOpen = true;
 });
 
-var data = new Buffer("A60100000004011802B8","hex");
-serialPort.write(data, function(err, results) {
-  console.log('err ' + err);
-  console.log('results ' + results);
-});
+
+var turnOff = function() {
+  if(isOpen){
+    var data = new Buffer("A60100000004011802B8","hex");
+    serialPort.write(data, function(err, results) {
+      console.log('err ' + err);
+      console.log('results ' + results);
+    });
+  }
+}
+
+setTimeout(turnOff,2000);
